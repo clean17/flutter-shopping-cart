@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping_cart/constants.dart';
 
 class ShoppingCartDetail extends StatelessWidget {
   const ShoppingCartDetail({Key? key}) : super(key: key);
@@ -87,10 +88,51 @@ class ShoppingCartDetail extends StatelessWidget {
   }
 
   Widget _buildDetailIcon(Color mColor) {
-    return SizedBox();
+    return Padding(
+      padding: EdgeInsets.only(right: 10),
+      child: Stack(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(),
+              shape: BoxShape.circle
+            ),
+          ),
+          Positioned(
+            left: 5,
+            top: 5,
+            child: ClipOval(
+              child: Container(
+                color: mColor,
+                width: 40,
+                height: 40,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildDetailButton(BuildContext context) {
-    return SizedBox();
+    return Align(
+      child: TextButton(
+        onPressed: () {},
+        style: TextButton.styleFrom(
+          backgroundColor: kAccentColor,
+          minimumSize: Size(300, 50),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: Text(
+          "Add to Cart",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
   }
 }
