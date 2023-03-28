@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_cart/constants.dart';
 
@@ -38,7 +39,8 @@ class ShoppingCartDetail extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          ),          Text(
+          ),
+          Text(
             "\$699",
             style: TextStyle(
               fontSize: 18,
@@ -96,10 +98,9 @@ class ShoppingCartDetail extends StatelessWidget {
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(),
-              shape: BoxShape.circle
-            ),
+                color: Colors.white,
+                border: Border.all(),
+                shape: BoxShape.circle),
           ),
           Positioned(
             left: 5,
@@ -120,7 +121,23 @@ class ShoppingCartDetail extends StatelessWidget {
   Widget _buildDetailButton(BuildContext context) {
     return Align(
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          showCupertinoDialog(
+              context: (context),
+              builder: (context) => CupertinoAlertDialog(
+                    title: Text("장바구니에 담으시겠습니까 ?"),
+                    actions: [
+                      CupertinoDialogAction(
+                        child: Text("확인", style: TextStyle(
+                          color: Colors.blue
+                        ),),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
+                  ));
+        },
         style: TextButton.styleFrom(
           backgroundColor: kAccentColor,
           minimumSize: Size(300, 50),
