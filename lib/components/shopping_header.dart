@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shopping_cart/constants.dart';
 
 class ShoppingCartHeader extends StatefulWidget {
+  // const ShoppingCartHeader({required this.updateState});
+  ShoppingCartHeader({Key? key, required this.updateState}) : super(key: key);
+
+  final Function(int) updateState;
+
 
   @override
   State<ShoppingCartHeader> createState() => _ShoppingCartHeaderState();
@@ -10,6 +15,7 @@ class ShoppingCartHeader extends StatefulWidget {
 
 class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
   int selectedId = 0;
+
 
   List<String> selectedPic = [
     "assets/p1.jpeg",
@@ -69,6 +75,7 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
         onPressed: () {
           setState(() {
             selectedId = id;
+            widget.updateState(id);
           });
         },
       ),

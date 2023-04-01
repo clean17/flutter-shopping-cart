@@ -20,15 +20,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ShoppingCartPage extends StatelessWidget {
+class ShoppingCartPage extends StatefulWidget {
+  @override
+  State<ShoppingCartPage> createState() => _ShoppingCartPageState();
+}
+
+class _ShoppingCartPageState extends State<ShoppingCartPage> {
+
+  int _test = 0;
+
+  void updateState(int id){
+    setState(() {
+      _test = id;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildShoppingCartAppBar(),
       body: Column(
         children: [
-          ShoppingCartHeader(),
-          ShoppingCartDetail(),
+          ShoppingCartHeader(updateState: updateState,),
+          ShoppingCartDetail(id: _test),
         ],
       ),
     );
@@ -38,7 +52,9 @@ class ShoppingCartPage extends StatelessWidget {
     return AppBar(
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
-        onPressed: () {},
+        onPressed: () {
+
+        },
       ),
       actions: [
         IconButton(

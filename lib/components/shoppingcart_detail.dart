@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shopping_cart/constants.dart';
 
 class ShoppingCartDetail extends StatelessWidget {
-  const ShoppingCartDetail({Key? key}) : super(key: key);
+  const ShoppingCartDetail({Key? key, required this.id}) : super(key: key);
+
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class ShoppingCartDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Urban Soft AL 10.0",
+            "Urban Soft AL 10.0 $id",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
